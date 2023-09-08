@@ -4,19 +4,19 @@
   box-sizing: border-box;
 }
 
-::root {
+:root {
   --corPrincipal: red;
   --corSecundaria: blue;
   --corBordas: hsl(240, 4.9%, 83.9%);
 }
 
 button {
-	border: 0;
-	background: nome;
+  border: 0;
+  background: nome;
 }
 
 main {
-  border: 1px solid  var(--corBordas);
+  border: 1px solid var(--corBordas);
   background: 1px solid #e5e5e5;
   max-width: max-content;
   border-radius: 5px;
@@ -29,25 +29,25 @@ main {
 }
 
 h2 {
-	text-align: center;
+  text-align: center;
 }
 
 #new-task {
-	display: flex;
-	justify-content: space-between;
-	gap: 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
 }
 
 #new-task__name {
-	border: 1px solid var(--corBordas);
-	padding: .5rem 1rem;
-	outline: none;
-	flex-grow: 1;
+  border: 1px solid var(--corBordas);
+  padding: 0.5rem 1rem;
+  outline: none;
+  flex-grow: 1;
 }
 
 #new-task__add {
-	border: 1px solid var(--corBordas);
-	padding: 0 10px;
+  border: 1px solid var(--corBordas);
+  padding: 0 10px;
 }
 
 #task-list {
@@ -57,23 +57,23 @@ h2 {
 }
 
 #task-list__container {
-	border: 1px solid var(--corBordas);
-	padding: .5rem 0;
-	display: flex;
-	gap: 5px;
-	align-items: center;
-	background: var(--corPrincipal);
-	position: relative;
+  border: 1px solid var(--corBordas);
+  padding: 0.5rem 0;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  background: var(--corPrincipal);
+  position: relative;
 }
 
 #task-list__container h5 {
-	flex-grow: 1;
+  flex-grow: 1;
 }
 
 #task-list__controls {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 #task-list__controls i {
-border: 1px solid var(--corBordas);
+  border: 1px solid var(--corBordas);
 }
