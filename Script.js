@@ -12,6 +12,8 @@ function colectTitle() {
   }
 
   createTaskList();
+  newTaskName.value = ""
+  newTaskName.focus()
 }
 
 function createTaskList() {
@@ -21,20 +23,20 @@ function createTaskList() {
   const spanTaskListName = document.createElement("span");
   spanTaskListName.setAttribute("id", "task-list__name");
   spanTaskListName.content = newTaskName.value;
-  
-  const iconTaskListCheck = document.createElement("i")
-  iconTaskListCheck.setAttribute("id", 'task-list__check')
-  iconTaskListCheck.setAttribute("class", 'bi-journal-check')
-  const iconTaskListDelete = document.createElement("i")
-  iconTaskListDelete.setAttribute("id", 'task-list__delete')
-  iconTaskListDelete.setAttribute("class", 'bi-trash3')
+
+  const iconTaskListCheck = document.createElement("i");
+  iconTaskListCheck.setAttribute("id", "task-list__check");
+  iconTaskListCheck.setAttribute("class", "bi-journal-check");
+  const iconTaskListDelete = document.createElement("i");
+  iconTaskListDelete.setAttribute("id", "task-list__delete");
+  iconTaskListDelete.setAttribute("class", "bi-trash3");
 
   taskList.appendChild(divTasmListContainer);
 
   divTasmListContainer.appendChild(spanTaskListName);
-  
-  divTasmListContainer.appendChild(iconTaskListCheck)
-  divTasmListContainer.appendChild(iconTaskListDelete)
+
+  divTasmListContainer.appendChild(iconTaskListCheck);
+  divTasmListContainer.appendChild(iconTaskListDelete);
 }
 
 // Chamados && EventListeners
