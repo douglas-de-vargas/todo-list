@@ -4,16 +4,24 @@ const newTaskAdd = document.querySelector("#new-task__add");
 const taskList = document.querySelector("#task-list");
 const taskListName = document.querySelector("#task-list__name");
 
+const spanAll = document.querySelectorAll("span");
+let jaExiste = false;
+
 // Functions
 function colectTitle() {
   if (newTaskName.value == "") {
     newTaskName.focus();
     return;
   }
+  // spanAll.forEach(function (span) {
+//     if (span.textContent === taskListName.value) {
+//       alert("já existe");
+//     }
+//   });
 
   createTaskList();
-  newTaskName.value = ""
-  newTaskName.focus()
+  newTaskName.value = "";
+  newTaskName.focus();
 }
 
 function createTaskList() {
