@@ -14,10 +14,10 @@ function colectTitle() {
     return;
   }
   // spanAll.forEach(function (span) {
-//     if (span.textContent === taskListName.value) {
-//       alert("já existe");
-//     }
-//   });
+  //     if (span.textContent === taskListName.value) {
+  //       alert("já existe");
+  //     }
+  //   });
 
   createTaskList();
   newTaskName.value = "";
@@ -28,9 +28,18 @@ function createTaskList() {
   const divTasmListContainer = document.createElement("div");
   divTasmListContainer.setAttribute("id", "task-list__container");
 
-  const spanTaskListName = document.createElement("span");
-  spanTaskListName.setAttribute("id", "task-list__name");
-  spanTaskListName.content = newTaskName.value;
+const inputAtributes = {
+	"id": "task-list__name",
+	"type": "text",
+	"placeholder": "Editando sua tarefa",
+}
+
+  const inputTaskListName = document.createElement("input");
+  
+for (let key in inputAtributes) {
+	inputTaskListName.setAttribute(key, inputAtributes[key])
+}
+  inputTaskListName.value = newTaskName.value;
 
   const iconTaskListCheck = document.createElement("i");
   iconTaskListCheck.setAttribute("id", "task-list__check");
@@ -41,7 +50,7 @@ function createTaskList() {
 
   taskList.appendChild(divTasmListContainer);
 
-  divTasmListContainer.appendChild(spanTaskListName);
+  divTasmListContainer.appendChild(inputTaskListName);
 
   divTasmListContainer.appendChild(iconTaskListCheck);
   divTasmListContainer.appendChild(iconTaskListDelete);
