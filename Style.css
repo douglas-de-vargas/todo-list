@@ -25,7 +25,7 @@ body {
 
 #git {
 	width: 100%;
-	margin-top: 50px;
+	margin-top: 20px;
 	text-align: center;
 }
 
@@ -51,24 +51,29 @@ h2 {
 }
 
 #new-task {
+  position: relative;
   display: flex;
-  justify-content: space-between;
   gap: 5px;
-  align-items: center;
-  background: red;
 }
 
 #new-task__name {
   border: 1px solid var(--corBordas);
-  padding: .5rem 1rem;
+  padding: .5rem;
   outline: none;
   flex-grow: 1;
+  margin-right: 45px;
 }
 
 #new-task__add {
-  background: var(--corBordas);
   border: 1px solid var(--corBordas);
-  padding: .4rem 10px;
+  background: var(--corBordas);
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #task-list {
