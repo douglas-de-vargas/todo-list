@@ -1,0 +1,1 @@
+const newTaskName = document.querySelector("#new-task__name")
