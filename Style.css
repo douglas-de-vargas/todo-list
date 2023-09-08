@@ -1,0 +1,23 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+::root {
+	--corPrincipal: red;
+	--corSecundaria: blue;
+}
+
+main {
+	border: 1px solid #cfcfcf;
+	background: 1px solid #e5e5e5;
+}
+
+#new-task {
+	background: blue;
+}
+
+#task-list {
+	background: red;
+}
