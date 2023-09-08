@@ -12,14 +12,20 @@
 main {
   border: 1px solid #cfcfcf;
   background: 1px solid #e5e5e5;
-  border-radius: 5px;
-  width: 90%;
   max-width: max-content;
+  border-radius: 5px;
   margin: 50px auto;
+  padding: 1rem;
+  width: 90%;
+}
+
+h2 {
+	text-align: center;
 }
 
 #new-task {
   background: blue;
+  padding: 1rem 0;
 }
 
 #task-list {
