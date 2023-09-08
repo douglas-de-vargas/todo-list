@@ -10,6 +10,10 @@
   --corBordas: hsl(240, 4.9%, 83.9%);
 }
 
+hr {
+	margin: 10px 0;
+}
+
 button {
   border: 0;
   background: nome;
@@ -18,7 +22,6 @@ button {
 main {
   border: 1px solid var(--corBordas);
   background: 1px solid #e5e5e5;
-  max-width: max-content;
   border-radius: 5px;
   margin: 50px auto;
   padding: 1rem;
@@ -53,27 +56,23 @@ h2 {
 #task-list {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 
 #task-list__container {
-  border: 1px solid var(--corBordas);
-  padding: 0.5rem 0;
   display: flex;
   gap: 5px;
-  align-items: center;
-  background: var(--corPrincipal);
+  align-items: flex-start;
   position: relative;
 }
 
-#task-list__container h5 {
+#task-list__container span {
   flex-grow: 1;
+  border: 1px solid var(--corBordas);
+  padding: 5px;
 }
 
-#task-list__controls {
-  display: flex;
-  flex-direction: column;
-}
-#task-list__controls i {
+#task-list__container i {
   border: 1px solid var(--corBordas);
+  padding: 5px;
 }
