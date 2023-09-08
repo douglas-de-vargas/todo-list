@@ -10,22 +10,32 @@ function colectTitle() {
     newTaskName.focus();
     return;
   }
+
   createTaskList();
 }
 
-function createTaskList() {)
- const divTasmListContainer = document.createElement(div)
- divTasmListContainer.classList.add('task-list__container')
- divTasmListContainer.content = "oi"
- 
- taskList.appendChild(divTasmListContainer)
-}
+function createTaskList() {
+  const divTasmListContainer = document.createElement("div");
+  divTasmListContainer.setAttribute("id", "task-list__container");
 
-// <div id="task-list__container">
-//   <span id="task-list__name">Fazer uma Lista de Tarefas</span>
-//   <i id="task-list__check" class="bi bi-journal-check"></i>
-//   <i id="task-list__delete" class="bi bi-trash3"></i>
-// </div>
+  const spanTaskListName = document.createElement("span");
+  spanTaskListName.setAttribute("id", "task-list__name");
+  spanTaskListName.content = newTaskName.value;
+  
+  const iconTaskListCheck = document.createElement("i")
+  iconTaskListCheck.setAttribute("id", 'task-list__check')
+  iconTaskListCheck.setAttribute("class", 'bi-journal-check')
+  const iconTaskListDelete = document.createElement("i")
+  iconTaskListDelete.setAttribute("id", 'task-list__delete')
+  iconTaskListDelete.setAttribute("class", 'bi-trash3')
+
+  taskList.appendChild(divTasmListContainer);
+
+  divTasmListContainer.appendChild(spanTaskListName);
+  
+  divTasmListContainer.appendChild(iconTaskListCheck)
+  divTasmListContainer.appendChild(iconTaskListDelete)
+}
 
 // Chamados && EventListeners
 newTaskAdd.addEventListener("click", colectTitle);
