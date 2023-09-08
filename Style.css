@@ -11,7 +11,7 @@
 }
 
 hr {
-	margin: 10px 0;
+  margin: 10px 0;
 }
 
 button {
@@ -20,18 +20,18 @@ button {
 }
 
 body {
-	background: #f3f3f3;
+  background: #f3f3f3;
 }
 
 #git {
-	width: 100%;
-	margin-top: 20px;
-	text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
 }
 
 #git a {
-	color: gold;
-	text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  color: gold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 main {
@@ -58,7 +58,7 @@ h2 {
 
 #new-task__name {
   border: 1px solid var(--corBordas);
-  padding: .5rem;
+  padding: 0.5rem;
   outline: none;
   flex-grow: 1;
   margin-right: 45px;
