@@ -86,4 +86,10 @@ function deletTask() {
 // Chamados && EventListeners
 newTaskAdd.addEventListener("click", colectTitle);
 
-taskListCheck.addEventListener("click", checkTask);
+taskList.addEventListener("click", function(event) {
+  if (event.target.id === "task-list__check") {
+    checkTask();
+  } else if (event.target.id === "task-list__delete") {
+    deletTask();
+  }
+});
