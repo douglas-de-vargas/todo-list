@@ -4,7 +4,7 @@ const newTaskAdd = document.querySelector("#new-task__add");
 const taskList = document.querySelector("#task-list");
 const taskListName = document.querySelector("#task-list__name");
 
-let listArray = []
+let listArray = [];
 
 // Functions
 const emptyInpuy = () => newTaskName.value.trim().length > 0;
@@ -15,11 +15,9 @@ function colectTitle() {
     newTaskName.focus();
     return;
   }
-
   newTaskName.classList.remove("error");
 
-listArray.push(newTaskName.value)
-console.log(listArray);
+  listArray.push(newTaskName.value);
 
   createTaskList();
   newTaskName.value = "";
@@ -27,6 +25,8 @@ console.log(listArray);
 }
 
 function createTaskList() {
+	for (let i in listArray) {
+		
   // Div container
   const divTaskListContainer = document.createElement("div");
   divTaskListContainer.setAttribute("id", "task-list__container");
@@ -43,6 +43,7 @@ function createTaskList() {
   for (const key in inputAtributes) {
     inputTaskListName.setAttribute(key, inputAtributes[key]);
   }
+
 
   // Icon checked
   const iconTaskListCheck = document.createElement("i");
@@ -70,7 +71,9 @@ function createTaskList() {
   divTaskListContainer.appendChild(inputTaskListName);
   divTaskListContainer.appendChild(iconTaskListCheck);
   divTaskListContainer.appendChild(iconTaskListDelete);
-}
+}}
 
 // Chamados && EventListeners
 newTaskAdd.addEventListener("click", colectTitle);
+
+console.log(listArray);
