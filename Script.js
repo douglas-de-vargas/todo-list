@@ -3,6 +3,8 @@ let newTaskName = document.querySelector("#new-task__name");
 const newTaskAdd = document.querySelector("#new-task__add");
 const taskList = document.querySelector("#task-list");
 const taskListName = document.querySelector("#task-list__name");
+const taskListCheck = document.querySelector("#task-list__check");
+const taskListDelete = document.querySelector("#task-list__delete");
 
 let listArray = [];
 
@@ -73,7 +75,19 @@ function createTaskList() {
   });
 }
 
+function checkTask() {
+	alert('checkTask')
+}
+
+function deletTask() {
+	alert('deleteTask')
+}
+
 // Chamados && EventListeners
 newTaskAdd.addEventListener("click", colectTitle);
+
+taskListCheck.addEventListener("click", checkTask);
+
+taskListDelete.addEventListener("click", deletTask);
 
 console.log(listArray);
