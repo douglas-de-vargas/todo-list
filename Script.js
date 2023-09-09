@@ -76,18 +76,14 @@ function createTaskList() {
 }
 
 function checkTask() {
-	alert('checkTask')
+  alert("checkTask clicked");
 }
 
 function deletTask() {
-	alert('deleteTask')
+  alert("deleteTask clicked");
 }
 
 // Chamados && EventListeners
 newTaskAdd.addEventListener("click", colectTitle);
 
 taskListCheck.addEventListener("click", checkTask);
-
-taskListDelete.addEventListener("click", deletTask);
-
-console.log(listArray);
