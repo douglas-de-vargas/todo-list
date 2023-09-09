@@ -28,7 +28,7 @@ function colectTitle() {
 function createTaskList() {
   taskList.innerHTML = "";
 
-  listArray.forEach(function (task) {
+  listArray.forEach(function (task, index) {
     // Div container
     const divTaskListContainer = document.createElement("div");
     divTaskListContainer.setAttribute("id", "task-list__container");
@@ -37,10 +37,11 @@ function createTaskList() {
     const inputTaskListName = document.createElement("input");
     const inputAtributes = {
       class: "myinput",
+      name: index,
       id: "task-list__name",
       type: "text",
-      placeholder: "Editando sua tarefa",
-      value: task,
+      placeholder: "Editando nota",
+      value: "Índice " + index + " | " + task,
     };
     for (const key in inputAtributes) {
       inputTaskListName.setAttribute(key, inputAtributes[key]);
@@ -75,21 +76,24 @@ function createTaskList() {
   });
 }
 
-function checkTask() {}
-
-function deletTask() {}
-
 // Chamados && EventListeners
 newTaskAdd.addEventListener("click", colectTitle);
 
-taskList.addEventListener("click", (e) => {
-  const targetEl = e.target;
+taskList.addEventListener("click", (el) => {
+  const targetEl = el.target;
   const parentEl = targetEl.closest("div");
 
-  if (e.target.id === "task-list__check") {
+  if (el.target.id === "task-list__check") {
     parentEl.classList.toggle("checked");
-  } else if (e.target.id === "task-list__delete") {
+  } else if (el.target.id === "task-list__delete") {
+    const taskIndex = Array.from(taskList.children).indexOf(parentEl);
+
+    if (taskIndex !== -1) {
+      listArray.splice(taskIndex, 1);
+    }
+
+    console.log(taskIndex);
+
     parentEl.remove();
-    parentEl.style.color = "red";
   }
 });
