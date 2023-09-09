@@ -4,20 +4,22 @@ const newTaskAdd = document.querySelector("#new-task__add");
 const taskList = document.querySelector("#task-list");
 const taskListName = document.querySelector("#task-list__name");
 
-let jaExiste = false;
+let listArray = []
 
 // Functions
 const emptyInpuy = () => newTaskName.value.trim().length > 0;
 
 function colectTitle() {
-  const validate = emptyInpuy();
-  if (!validate) {
-    newTaskName.classList.add('error')
+  if (!emptyInpuy()) {
+    newTaskName.classList.add("error");
     newTaskName.focus();
     return;
   }
 
-    newTaskName.classList.remove('error')
+  newTaskName.classList.remove("error");
+
+listArray.push(newTaskName.value)
+console.log(listArray);
 
   createTaskList();
   newTaskName.value = "";
