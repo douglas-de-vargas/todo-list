@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Tarefas</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="Style.css" type="text/css" media="all" />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <main>
+      <h2>Lista de Tarefas</h2>
+
+      <section id="new-task">
+        <input
+          class="inp"
+          type="text"
+          id="new-task__name"
+          placeholder="Nova Tarefa"
+        />
+        <i id="new-task__add" class="bi bi-plus-lg"></i>
+      </section>
+
+      <span id="hr"></span>
+
+      <section id="task-list">
+        <div id="task-list__container">
+          <input
+            type="text"
+            id="task-list__name"
+            placeholder="Tarefa"
+            value="Exemplo de tarefa"
+          />
+          <i id="task-list__check" class="bi bi-journal-check"></i>
+          <i id="task-list__delete" class="bi bi-trash3"></i>
+        </div>
+      </section>
+    </main>
+    <div id="git">
+      <a href="https://github.com/S1NS3RO/Lista-de-tarefas" target="_blank">
+        <i class="bi bi-github"></i>
+      </a>
+    </div>
+    <!-- JavaScript -->
+    <script
+      src="Script.js"
+      type="application/javascript"
+      charset="utf-8"
+      defer
+    ></script>
+  </body>
+</html>
