@@ -75,21 +75,21 @@ function createTaskList() {
   });
 }
 
-function checkTask() {
-  alert("checkTask clicked");
-}
+function checkTask() {}
 
-function deletTask() {
-  alert("deleteTask clicked");
-}
+function deletTask() {}
 
 // Chamados && EventListeners
 newTaskAdd.addEventListener("click", colectTitle);
 
-taskList.addEventListener("click", function(event) {
-  if (event.target.id === "task-list__check") {
-    checkTask();
-  } else if (event.target.id === "task-list__delete") {
-    deletTask();
+taskList.addEventListener("click", (e) => {
+  const targetEl = e.target;
+  const parentEl = targetEl.closest("div");
+
+  if (e.target.id === "task-list__check") {
+    parentEl.classList.toggle("checked");
+  } else if (e.target.id === "task-list__delete") {
+    parentEl.remove();
+    parentEl.style.color = "red";
   }
 });
