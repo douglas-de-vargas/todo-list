@@ -10,14 +10,16 @@
   --corBordas: hsl(240, 4.9%, 83.9%);
 }
 
-hr {
-  margin: 10px 0;
-  color: var(--corBordas);
-}
-
 button {
   border: 0;
   background: nome;
+}
+
+#hr {
+	background: var(--corBordas);
+	width: 100%;
+	height: 1px;
+	margin: 10px 0;
 }
 
 body {
