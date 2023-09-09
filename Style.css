@@ -12,6 +12,7 @@
 
 hr {
   margin: 10px 0;
+  color: var(--corBordas);
 }
 
 button {
