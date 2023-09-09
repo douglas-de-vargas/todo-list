@@ -64,6 +64,10 @@ h2 {
   margin-right: 45px;
 }
 
+.error {
+	border: 1px solid #e98b8b !important;
+}
+
 #new-task__add {
   border: 1px solid var(--corBordas);
   background: var(--corBordas);
