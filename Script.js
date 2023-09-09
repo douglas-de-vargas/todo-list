@@ -36,12 +36,12 @@ function createTaskList() {
     // Input da tarefa
     const inputTaskListName = document.createElement("input");
     const inputAtributes = {
-      class: "myinput",
+      class: "my-input",
       name: index,
       id: "task-list__name",
       type: "text",
       placeholder: "Editando nota",
-      value: "Índice " + index + " | " + task,
+      value: task,
     };
     for (const key in inputAtributes) {
       inputTaskListName.setAttribute(key, inputAtributes[key]);
@@ -86,14 +86,14 @@ taskList.addEventListener("click", (el) => {
   if (el.target.id === "task-list__check") {
     parentEl.classList.toggle("checked");
   } else if (el.target.id === "task-list__delete") {
-    const taskIndex = Array.from(taskList.children).indexOf(parentEl);
+    const taskIndex = listArray.indexOf(parentEl.querySelector(".my-input").value);
 
     if (taskIndex !== -1) {
       listArray.splice(taskIndex, 1);
     }
 
-    console.log(taskIndex);
 
+    console.log(taskIndex);
     parentEl.remove();
   }
 });
