@@ -1,23 +1,29 @@
 // Variáveis
-const newTaskName = document.querySelector("#new-task__name");
+let newTaskName = document.querySelector("#new-task__name");
 const newTaskAdd = document.querySelector("#new-task__add");
 const taskList = document.querySelector("#task-list");
 const taskListName = document.querySelector("#task-list__name");
 
-const spanAll = document.querySelectorAll("span");
 let jaExiste = false;
 
 // Functions
 function colectTitle() {
-  if (newTaskName.value == "") {
+  if (newTaskName.value === "") {
     newTaskName.focus();
     return;
   }
-  // spanAll.forEach(function (span) {
-  //     if (span.textContent === taskListName.value) {
-  //       alert("já existe");
-  //     }
-  //   });
+
+  const tasksListArray = Array.from('myinput');
+console.log(tasksListArray);
+  const jaExisteArray = tasksListArray.some(function (input) {
+    return input.value === newTaskName.value;
+  });
+
+  if (jaExisteArray) {
+    alert("Ja existe");
+  } else {
+    alert("ta de boa");
+  }
 
   createTaskList();
   newTaskName.value = "";
@@ -25,35 +31,49 @@ function colectTitle() {
 }
 
 function createTaskList() {
-  const divTasmListContainer = document.createElement("div");
-  divTasmListContainer.setAttribute("id", "task-list__container");
+  // Div container
+  const divTaskListContainer = document.createElement("div");
+  divTaskListContainer.setAttribute("id", "task-list__container");
 
-const inputAtributes = {
-	"id": "task-list__name",
-	"type": "text",
-	"placeholder": "Editando sua tarefa",
-}
-
+  // Input da tarefa
   const inputTaskListName = document.createElement("input");
-  
-for (let key in inputAtributes) {
-	inputTaskListName.setAttribute(key, inputAtributes[key])
-}
-  inputTaskListName.value = newTaskName.value;
+  const inputAtributes = {
+	class: "myinput",
+    id: "task-list__name",
+    type: "text",
+    placeholder: "Editando sua tarefa",
+    value: newTaskName.value,
+  };
+  for (const key in inputAtributes) {
+    inputTaskListName.setAttribute(key, inputAtributes[key]);
+  }
 
+  // Icon checked
   const iconTaskListCheck = document.createElement("i");
-  iconTaskListCheck.setAttribute("id", "task-list__check");
-  iconTaskListCheck.setAttribute("class", "bi-journal-check");
+  const iconCheck_Atributes = {
+    id: "task-list__check",
+    class: "bi",
+    class: "bi-journal-check",
+  };
+  for (const key in iconCheck_Atributes) {
+    iconTaskListCheck.setAttribute(key, iconCheck_Atributes[key]);
+  }
+
+  // Icon delete
   const iconTaskListDelete = document.createElement("i");
-  iconTaskListDelete.setAttribute("id", "task-list__delete");
-  iconTaskListDelete.setAttribute("class", "bi-trash3");
+  const iconDelete_Atributes = {
+    id: "task-list__delete",
+    class: "bi",
+    class: "bi-trash3",
+  };
+  for (const key in iconDelete_Atributes) {
+    iconTaskListDelete.setAttribute(key, iconDelete_Atributes[key]);
+  }
 
-  taskList.appendChild(divTasmListContainer);
-
-  divTasmListContainer.appendChild(inputTaskListName);
-
-  divTasmListContainer.appendChild(iconTaskListCheck);
-  divTasmListContainer.appendChild(iconTaskListDelete);
+  taskList.appendChild(divTaskListContainer);
+  divTaskListContainer.appendChild(inputTaskListName);
+  divTaskListContainer.appendChild(iconTaskListCheck);
+  divTaskListContainer.appendChild(iconTaskListDelete);
 }
 
 // Chamados && EventListeners
