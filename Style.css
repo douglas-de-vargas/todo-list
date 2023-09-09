@@ -96,6 +96,10 @@ h2 {
   position: relative;
 }
 
+.checked {
+	border: 1px solid green !important;
+}
+
 #task-list__name {
   flex-grow: 1;
   border: 1px solid var(--corBordas);
