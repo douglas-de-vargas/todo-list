@@ -96,7 +96,7 @@ h2 {
 #task-list__name {
   flex-grow: 1;
   border: 1px solid var(--corBordas);
-  padding: 5px 7px;
+  padding: 7px;
 }
 
 #task-list__container i {
