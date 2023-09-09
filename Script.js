@@ -7,23 +7,17 @@ const taskListName = document.querySelector("#task-list__name");
 let jaExiste = false;
 
 // Functions
+const emptyInpuy = () => newTaskName.value.trim().length > 0;
+
 function colectTitle() {
-  if (newTaskName.value === "") {
+  const validate = emptyInpuy();
+  if (!validate) {
+    newTaskName.classList.add('error')
     newTaskName.focus();
     return;
   }
 
-  const tasksListArray = Array.from('myinput');
-console.log(tasksListArray);
-  const jaExisteArray = tasksListArray.some(function (input) {
-    return input.value === newTaskName.value;
-  });
-
-  if (jaExisteArray) {
-    alert("Ja existe");
-  } else {
-    alert("ta de boa");
-  }
+    newTaskName.classList.remove('error')
 
   createTaskList();
   newTaskName.value = "";
@@ -38,7 +32,7 @@ function createTaskList() {
   // Input da tarefa
   const inputTaskListName = document.createElement("input");
   const inputAtributes = {
-	class: "myinput",
+    class: "myinput",
     id: "task-list__name",
     type: "text",
     placeholder: "Editando sua tarefa",
