@@ -16,8 +16,7 @@ function colectTitle() {
     return;
   }
   newTaskName.classList.remove("error");
-
-  listArray.push(newTaskName.value);
+  listArray.push(newTaskName.value.trim());
 
   createTaskList();
   newTaskName.value = "";
@@ -25,53 +24,54 @@ function colectTitle() {
 }
 
 function createTaskList() {
-	for (let i in listArray) {
-		
-  // Div container
-  const divTaskListContainer = document.createElement("div");
-  divTaskListContainer.setAttribute("id", "task-list__container");
+  taskList.innerHTML = "";
 
-  // Input da tarefa
-  const inputTaskListName = document.createElement("input");
-  const inputAtributes = {
-    class: "myinput",
-    id: "task-list__name",
-    type: "text",
-    placeholder: "Editando sua tarefa",
-    value: newTaskName.value,
-  };
-  for (const key in inputAtributes) {
-    inputTaskListName.setAttribute(key, inputAtributes[key]);
-  }
+  listArray.forEach(function (task) {
+    // Div container
+    const divTaskListContainer = document.createElement("div");
+    divTaskListContainer.setAttribute("id", "task-list__container");
 
+    // Input da tarefa
+    const inputTaskListName = document.createElement("input");
+    const inputAtributes = {
+      class: "myinput",
+      id: "task-list__name",
+      type: "text",
+      placeholder: "Editando sua tarefa",
+      value: task,
+    };
+    for (const key in inputAtributes) {
+      inputTaskListName.setAttribute(key, inputAtributes[key]);
+    }
 
-  // Icon checked
-  const iconTaskListCheck = document.createElement("i");
-  const iconCheck_Atributes = {
-    id: "task-list__check",
-    class: "bi",
-    class: "bi-journal-check",
-  };
-  for (const key in iconCheck_Atributes) {
-    iconTaskListCheck.setAttribute(key, iconCheck_Atributes[key]);
-  }
+    // Icon checked
+    const iconTaskListCheck = document.createElement("i");
+    const iconCheck_Atributes = {
+      id: "task-list__check",
+      class: "bi",
+      class: "bi-journal-check",
+    };
+    for (const key in iconCheck_Atributes) {
+      iconTaskListCheck.setAttribute(key, iconCheck_Atributes[key]);
+    }
 
-  // Icon delete
-  const iconTaskListDelete = document.createElement("i");
-  const iconDelete_Atributes = {
-    id: "task-list__delete",
-    class: "bi",
-    class: "bi-trash3",
-  };
-  for (const key in iconDelete_Atributes) {
-    iconTaskListDelete.setAttribute(key, iconDelete_Atributes[key]);
-  }
+    // Icon delete
+    const iconTaskListDelete = document.createElement("i");
+    const iconDelete_Atributes = {
+      id: "task-list__delete",
+      class: "bi",
+      class: "bi-trash3",
+    };
+    for (const key in iconDelete_Atributes) {
+      iconTaskListDelete.setAttribute(key, iconDelete_Atributes[key]);
+    }
+    divTaskListContainer.appendChild(inputTaskListName);
+    divTaskListContainer.appendChild(iconTaskListCheck);
+    divTaskListContainer.appendChild(iconTaskListDelete);
 
-  taskList.appendChild(divTaskListContainer);
-  divTaskListContainer.appendChild(inputTaskListName);
-  divTaskListContainer.appendChild(iconTaskListCheck);
-  divTaskListContainer.appendChild(iconTaskListDelete);
-}}
+    taskList.insertBefore(divTaskListContainer, taskList.firstChild);
+  });
+}
 
 // Chamados && EventListeners
 newTaskAdd.addEventListener("click", colectTitle);
