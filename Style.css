@@ -79,6 +79,7 @@ h2 {
   height: 100%;
   width: 40px;
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
 }
@@ -96,18 +97,21 @@ h2 {
   position: relative;
 }
 
-.checked {
-	border: 1px solid green !important;
+.checked * {
+	background: rgba(145,186,101,0.642);
+	color: #677c55;
 }
 
 #task-list__name {
   flex-grow: 1;
   border: 1px solid var(--corBordas);
   padding: 7px;
+  outline: none;
 }
 
 #task-list__container i {
   background: var(--corBordas);
   border: 1px solid var(--corBordas);
   padding: 5px 7px;
+  cursor: pointer;
 }
