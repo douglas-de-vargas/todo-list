@@ -80,15 +80,8 @@ function createTaskList(locateSection, locateArray, checkClass) {
   });
 }
 
-// Chamados && EventListeners
-newTaskAdd.addEventListener("click", colectTitle);
-
-taskList.addEventListener("click", (el) => {
-  const targetEl = el.target;
-  const parentEl = targetEl.closest("div");
-
-  if (el.target.id === "task-list__check") {
-    const taskIndex = listArray.indexOf(
+function onChecked(parentEl) {
+	 const taskIndex = listArray.indexOf(
       parentEl.querySelector(".my-input").value
     );
     if (taskIndex !== -1) {
@@ -100,10 +93,10 @@ taskList.addEventListener("click", (el) => {
       listArray.splice(taskIndex, 1);
       parentEl.remove();
       
-      createTaskList(taskChecked, checkedArray, "checked")
+createTaskList(taskChecked, checkedArray, "checked")
+}}
 
-    }
-  } else if (el.target.id === "task-list__delete") {
+onDelete(parentEl) {
     const taskIndex = listArray.indexOf(
       parentEl.querySelector(".my-input").value
     );
@@ -112,5 +105,19 @@ taskList.addEventListener("click", (el) => {
       listArray.splice(taskIndex, 1);
       parentEl.remove();
     }
+    console.log(taskIndex);
   }
+
+// Chamados && EventListeners
+newTaskAdd.addEventListener("click", colectTitle);
+
+taskList.addEventListener("click", (el) => {
+  const targetEl = el.target;
+  const parentEl = targetEl.closest("div");
+
+  if (el.target.id === "task-list__check") {
+	onChecked(parentEl)
+  } else if (el.target.id === "task-list__delete") {
+	onDelete(parentEl)
+}
 });
