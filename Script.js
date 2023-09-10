@@ -129,7 +129,11 @@ function onDelete(parentEl) {
 }
 
 function emptySection(whichSection) {
-  alert(whichSection.id + " vazia");
+	if (whichSection == taskList) {
+  whichSection.innerHTML = "Nenhuma tarefa!"
+	} else if (whichSection == taskChecked) {
+		whichSection.innerHTML = "0 Tarefas concluídas!"
+	}
 }
 
 // Chamados && EventListeners
