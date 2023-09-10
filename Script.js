@@ -6,7 +6,7 @@ const taskListName = document.querySelector("#task-list__name");
 const taskListCheck = document.querySelector("#task-list__check");
 const taskListDelete = document.querySelector("#task-list__delete");
 const taskChecked = document.querySelector("#task-checked");
-const taskListContainer = document.querySelector("#task-list__container")
+const taskListContainer = document.querySelector("#task-list__container");
 
 let listArray = [];
 let checkedArray = [];
@@ -81,32 +81,33 @@ function createTaskList(locateSection, locateArray, checkClass) {
 }
 
 function onChecked(parentEl) {
-	 const taskIndex = listArray.indexOf(
-      parentEl.querySelector(".my-input").value
-    );
-    if (taskIndex !== -1) {
-      //pega o valor da task checked
-      const checkedValue = listArray[taskIndex];
-      //insere na checkedArray
-      checkedArray.push(checkedValue);
-      //deleta da section task-list
-      listArray.splice(taskIndex, 1);
-      parentEl.remove();
-      
-createTaskList(taskChecked, checkedArray, "checked")
-}}
+  const taskIndex = listArray.indexOf(
+    parentEl.querySelector(".my-input").value
+  );
+  if (taskIndex !== -1) {
+    //pega o valor da task checked
+    const checkedValue = listArray[taskIndex];
+    //insere na checkedArray
+    checkedArray.push(checkedValue);
+    //deleta da section task-list
+    listArray.splice(taskIndex, 1);
+    parentEl.remove();
 
-onDelete(parentEl) {
-    const taskIndex = listArray.indexOf(
-      parentEl.querySelector(".my-input").value
-    );
-
-    if (taskIndex !== -1) {
-      listArray.splice(taskIndex, 1);
-      parentEl.remove();
-    }
-    console.log(taskIndex);
+    createTaskList(taskChecked, checkedArray, "checked");
   }
+}
+
+function onDelete(parentEl) {
+  const taskIndex = listArray.indexOf(
+    parentEl.querySelector(".my-input").value
+  );
+
+  if (taskIndex !== -1) {
+    listArray.splice(taskIndex, 1);
+    parentEl.remove();
+  }
+  console.log(taskIndex);
+}
 
 // Chamados && EventListeners
 newTaskAdd.addEventListener("click", colectTitle);
@@ -116,8 +117,8 @@ taskList.addEventListener("click", (el) => {
   const parentEl = targetEl.closest("div");
 
   if (el.target.id === "task-list__check") {
-	onChecked(parentEl)
+    onChecked(parentEl);
   } else if (el.target.id === "task-list__delete") {
-	onDelete(parentEl)
-}
+    onDelete(parentEl);
+  }
 });
