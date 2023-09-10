@@ -105,13 +105,13 @@ function onChecked(
   }
 }
 
-function onDelete(parentEl) {
-  const taskIndex = listArray.indexOf(
+function onDelete(parentEl, currentArray) {
+  const taskIndex = currentArray.indexOf(
     parentEl.querySelector(".my-input").value
   );
 
   if (taskIndex !== -1) {
-    listArray.splice(taskIndex, 1);
+    currentArray.splice(taskIndex, 1);
     parentEl.remove();
   }
 }
@@ -150,7 +150,5 @@ document.addEventListener("click", (el) => {
       checkedArray,
       listArray
     );
-  } else if (el.target.id === "task-list__delete") {
-    onDelete(parentEl);
   }
 });
