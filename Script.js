@@ -8,7 +8,6 @@ const taskListDelete = document.querySelector("#task-list__delete");
 const taskChecked = document.querySelector("#task-checked");
 const taskListContainer = document.querySelector("#task-list__container");
 
-let checkedIcon = "";
 let listArray = [];
 let checkedArray = [];
 
@@ -82,7 +81,14 @@ function createTaskList(forSection, toLocateArray, checkClass, checkedIcon) {
   });
 }
 
-function onChecked(forSection, checkedIcon, checkClass, parentEl, currentArray, newArray) {
+function onChecked(
+  forSection,
+  checkedIcon,
+  checkClass,
+  parentEl,
+  currentArray,
+  newArray
+) {
   const taskIndex = currentArray.indexOf(
     parentEl.querySelector(".my-input").value
   );
@@ -120,17 +126,32 @@ document.addEventListener("click", (el) => {
   const parentEl = targetEl.closest("div");
   let forSection = "";
   let checkClass = "";
+  let checkedIcon = "";
 
   if (el.target.className === "bi-journal-check") {
     forSection = taskChecked;
     checkClass = "checked";
     checkedIcon = "bi-journal-arrow-up";
-    onChecked(forSection, checkedIcon, checkClass, parentEl, listArray, checkedArray);
+    onChecked(
+      forSection,
+      checkedIcon,
+      checkClass,
+      parentEl,
+      listArray,
+      checkedArray
+    );
   } else if (el.target.className === "bi-journal-arrow-up") {
     forSection = taskList;
     checkClass = "";
     checkedIcon = "bi-journal-check";
-    onChecked(forSection, checkedIcon, checkClass, parentEl, checkedArray, listArray);
+    onChecked(
+      forSection,
+      checkedIcon,
+      checkClass,
+      parentEl,
+      checkedArray,
+      listArray
+    );
   } else if (el.target.id === "task-list__delete") {
     onDelete(parentEl);
   }
