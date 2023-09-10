@@ -103,7 +103,6 @@ function onChecked(
 
     createTaskList(forSection, newArray, checkClass, checkedIcon);
   }
-  console.log("onChecked " + taskIndex);
 }
 
 function onDelete(parentEl) {
@@ -115,7 +114,6 @@ function onDelete(parentEl) {
     listArray.splice(taskIndex, 1);
     parentEl.remove();
   }
-  console.log("onDelete " + taskIndex);
 }
 
 // Chamados && EventListeners
