@@ -7,6 +7,7 @@ const taskListCheck = document.querySelector("#task-list__check");
 const taskListDelete = document.querySelector("#task-list__delete");
 
 let listArray = [];
+let checkedArray = [];
 
 // Functions
 const emptyInpuy = () => newTaskName.value.trim().length > 0;
@@ -84,16 +85,26 @@ taskList.addEventListener("click", (el) => {
   const parentEl = targetEl.closest("div");
 
   if (el.target.id === "task-list__check") {
-    parentEl.classList.toggle("checked");
+    const taskIndex = listArray.indexOf(
+      parentEl.querySelector(".my-input").value
+    );
+    if (taskIndex !== -1) {
+      //pega o valor da task checked
+      const checkedValue = listArray[taskIndex];
+      //insere na checkedArray
+      checkedArray.push(checkedValue);
+      //deleta da section task-list
+      listArray.splice(taskIndex, 1);
+      parentEl.remove();
+    }
   } else if (el.target.id === "task-list__delete") {
-    const taskIndex = listArray.indexOf(parentEl.querySelector(".my-input").value);
+    const taskIndex = listArray.indexOf(
+      parentEl.querySelector(".my-input").value
+    );
 
     if (taskIndex !== -1) {
       listArray.splice(taskIndex, 1);
+      parentEl.remove();
     }
-
-
-    console.log(taskIndex);
-    parentEl.remove();
   }
 });
