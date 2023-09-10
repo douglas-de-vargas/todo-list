@@ -106,18 +106,22 @@ function onChecked(
 }
 
 function onDelete(parentEl) {
-    //verifica em qual Array está o valor
-    const taskValue = parentEl.querySelector(".my-input").value;
-    const taskIndexInList = listArray.indexOf(taskValue);
-    const taskIndexInChecked = checkedArray.indexOf(taskValue);
-//deleta o conteúdo do array correto
-    if (taskIndexInList !== -1) {
-      listArray.splice(taskIndexInList, 1);
-    } else if (taskIndexInChecked !== -1) {
-      checkedArray.splice(taskIndexInChecked, 1);
-    }
-    //deleta a task do DOM
-    parentEl.remove();
+  //verifica em qual Array está o valor
+  const taskValue = parentEl.querySelector(".my-input").value;
+  const taskIndexInList = listArray.indexOf(taskValue);
+  const taskIndexInChecked = checkedArray.indexOf(taskValue);
+  //deleta o conteúdo do array correto
+  if (taskIndexInList !== -1) {
+    listArray.splice(taskIndexInList, 1);
+  } else if (taskIndexInChecked !== -1) {
+    checkedArray.splice(taskIndexInChecked, 1);
+  //deleta a task do DOM
+  parentEl.remove();
+    if (taskChecked.innerHTML === "") {
+  alert('taskChecked vazia');
+}
+
+  }
 }
 
 // Chamados && EventListeners
@@ -155,6 +159,6 @@ document.addEventListener("click", (el) => {
       listArray
     );
   } else if (el.target.className === "bi-trash3") {
-	onDelete(parentEl)
+    onDelete(parentEl);
   }
 });
