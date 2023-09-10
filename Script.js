@@ -105,15 +105,19 @@ function onChecked(
   }
 }
 
-function onDelete(parentEl, currentArray) {
-  const taskIndex = currentArray.indexOf(
-    parentEl.querySelector(".my-input").value
-  );
-
-  if (taskIndex !== -1) {
-    currentArray.splice(taskIndex, 1);
+function onDelete(parentEl) {
+    //verifica em qual Array está o valor
+    const taskValue = parentEl.querySelector(".my-input").value;
+    const taskIndexInList = listArray.indexOf(taskValue);
+    const taskIndexInChecked = checkedArray.indexOf(taskValue);
+//deleta o conteúdo do array correto
+    if (taskIndexInList !== -1) {
+      listArray.splice(taskIndexInList, 1);
+    } else if (taskIndexInChecked !== -1) {
+      checkedArray.splice(taskIndexInChecked, 1);
+    }
+    //deleta a task do DOM
     parentEl.remove();
-  }
 }
 
 // Chamados && EventListeners
@@ -150,5 +154,7 @@ document.addEventListener("click", (el) => {
       checkedArray,
       listArray
     );
+  } else if (el.target.className === "bi-trash3") {
+	onDelete(parentEl)
   }
 });
