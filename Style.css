@@ -15,13 +15,6 @@ button {
   background: nome;
 }
 
-#hr {
-	background: var(--corBordas);
-	width: 100%;
-	height: 1px;
-	margin: 10px 0;
-}
-
 body {
   background: #f3f3f3;
 }
@@ -46,7 +39,6 @@ main {
   width: 90%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
 }
 
 h2 {
@@ -57,6 +49,7 @@ h2 {
   position: relative;
   display: flex;
   gap: 5px;
+  margin-top: .8rem;
 }
 
 #new-task__name {
@@ -79,14 +72,19 @@ h2 {
   height: 100%;
   width: 40px;
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
 }
 
-#task-list {
+#task-list,
+#task-checked {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border-top: 1px solid var(--corBordas);
+  margin-top: 15px;
+  padding-top: 15px;
 }
 
 #task-list__container {
@@ -96,18 +94,21 @@ h2 {
   position: relative;
 }
 
-.checked {
-	border: 1px solid green !important;
+.checked input {
+	background: rgba(145,186,101,0.642);
+	color: #677c55;
 }
 
 #task-list__name {
   flex-grow: 1;
   border: 1px solid var(--corBordas);
   padding: 7px;
+  outline: none;
 }
 
 #task-list__container i {
   background: var(--corBordas);
   border: 1px solid var(--corBordas);
   padding: 5px 7px;
+  cursor: pointer;
 }
