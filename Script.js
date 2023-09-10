@@ -8,14 +8,15 @@ const taskListDelete = document.querySelector("#task-list__delete");
 const taskChecked = document.querySelector("#task-checked");
 const taskListContainer = document.querySelector("#task-list__container");
 
+let checkedIcon = "";
 let listArray = [];
 let checkedArray = [];
 
 // Functions
-const emptyInpuy = () => newTaskName.value.trim().length > 0;
+const emptyInput = () => newTaskName.value.trim().length > 0;
 
 function colectTitle() {
-  if (!emptyInpuy()) {
+  if (!emptyInput()) {
     newTaskName.classList.add("error");
     newTaskName.focus();
     return;
@@ -23,15 +24,16 @@ function colectTitle() {
   newTaskName.classList.remove("error");
   listArray.push(newTaskName.value.trim());
 
-  createTaskList(taskList, listArray);
+  checkedIcon = "bi-journal-check";
+  createTaskList(taskList, listArray, "", checkedIcon);
   newTaskName.value = "";
   newTaskName.focus();
 }
 
-function createTaskList(locateSection, locateArray, checkClass) {
-  locateSection.innerHTML = "";
+function createTaskList(forSection, toLocateArray, checkClass, checkedIcon) {
+  forSection.innerHTML = "";
 
-  locateArray.forEach(function (task, index) {
+  toLocateArray.forEach(function (task, index) {
     // Div container
     const divTaskListContainer = document.createElement("div");
     divTaskListContainer.setAttribute("id", "task-list__container");
@@ -39,7 +41,7 @@ function createTaskList(locateSection, locateArray, checkClass) {
 
     // Input da tarefa
     const inputTaskListName = document.createElement("input");
-    const inputAtributes = {
+    const inputAttributes = {
       class: "my-input",
       name: index,
       id: "task-list__name",
@@ -47,54 +49,56 @@ function createTaskList(locateSection, locateArray, checkClass) {
       placeholder: "Editando nota",
       value: task,
     };
-    for (const key in inputAtributes) {
-      inputTaskListName.setAttribute(key, inputAtributes[key]);
+    for (const key in inputAttributes) {
+      inputTaskListName.setAttribute(key, inputAttributes[key]);
     }
 
     // Icon checked
     const iconTaskListCheck = document.createElement("i");
-    const iconCheck_Atributes = {
+    const iconCheck_Attributes = {
       id: "task-list__check",
       class: "bi",
-      class: "bi-journal-check",
+      class: checkedIcon,
     };
-    for (const key in iconCheck_Atributes) {
-      iconTaskListCheck.setAttribute(key, iconCheck_Atributes[key]);
+    for (const key in iconCheck_Attributes) {
+      iconTaskListCheck.setAttribute(key, iconCheck_Attributes[key]);
     }
 
     // Icon delete
     const iconTaskListDelete = document.createElement("i");
-    const iconDelete_Atributes = {
+    const iconDelete_Attributes = {
       id: "task-list__delete",
       class: "bi",
       class: "bi-trash3",
     };
-    for (const key in iconDelete_Atributes) {
-      iconTaskListDelete.setAttribute(key, iconDelete_Atributes[key]);
+    for (const key in iconDelete_Attributes) {
+      iconTaskListDelete.setAttribute(key, iconDelete_Attributes[key]);
     }
     divTaskListContainer.appendChild(inputTaskListName);
     divTaskListContainer.appendChild(iconTaskListCheck);
     divTaskListContainer.appendChild(iconTaskListDelete);
 
-    locateSection.insertBefore(divTaskListContainer, locateSection.firstChild);
+    forSection.insertBefore(divTaskListContainer, forSection.firstChild);
   });
 }
 
-function onChecked(parentEl) {
-  const taskIndex = listArray.indexOf(
+function onChecked(forSection, checkClass, parentEl, arrayAtual, novoArray) {
+  const taskIndex = arrayAtual.indexOf(
     parentEl.querySelector(".my-input").value
   );
   if (taskIndex !== -1) {
     //pega o valor da task checked
-    const checkedValue = listArray[taskIndex];
+    const checkedValue = arrayAtual[taskIndex];
     //insere na checkedArray
-    checkedArray.push(checkedValue);
+    novoArray.push(checkedValue);
     //deleta da section task-list
-    listArray.splice(taskIndex, 1);
+    arrayAtual.splice(taskIndex, 1);
     parentEl.remove();
 
-    createTaskList(taskChecked, checkedArray, "checked");
+    checkedIcon = "bi-journal-arrow-up";
+    createTaskList(forSection, novoArray, checkClass, checkedIcon);
   }
+  console.log("onChecked " + taskIndex);
 }
 
 function onDelete(parentEl) {
@@ -106,18 +110,26 @@ function onDelete(parentEl) {
     listArray.splice(taskIndex, 1);
     parentEl.remove();
   }
-  console.log(taskIndex);
+  console.log("onDelete " + taskIndex);
 }
 
 // Chamados && EventListeners
 newTaskAdd.addEventListener("click", colectTitle);
 
-taskList.addEventListener("click", (el) => {
+document.addEventListener("click", (el) => {
   const targetEl = el.target;
   const parentEl = targetEl.closest("div");
+  let forSection = "";
+  let checkClass = "";
 
-  if (el.target.id === "task-list__check") {
-    onChecked(parentEl);
+  if (el.target.className === "bi-journal-check") {
+    forSection = taskChecked;
+    checkClass = "checked";
+    onChecked(forSection, checkClass, parentEl, listArray, checkedArray);
+  } else if (el.target.className === "bi-journal-arrow-up") {
+    forSection = taskList;
+    checkClass = "";
+    onChecked(forSection, checkClass, parentEl, checkedArray, listArray);
   } else if (el.target.id === "task-list__delete") {
     onDelete(parentEl);
   }
