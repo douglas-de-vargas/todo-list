@@ -8,6 +8,9 @@ const taskListDelete = document.querySelector("#task-list__delete");
 const taskChecked = document.querySelector("#task-checked");
 const taskListContainer = document.querySelector("#task-list__container");
 
+let forSection = "";
+let checkClass = "";
+let checkedIcon = "";
 let listArray = [];
 let checkedArray = [];
 
@@ -21,10 +24,19 @@ function colectTitle() {
     return;
   }
   newTaskName.classList.remove("error");
-  listArray.push(newTaskName.value.trim());
+  const newTaskValue = newTaskName.value.trim();
+
+  if (!listArray.includes(newTaskValue)) {
+    listArray.push(newTaskValue);
+  } else {
+    newTaskName.classList.add("error");
+    newTaskName.value = "";
+    newTaskName.focus();
+    return;
+  }
 
   checkedIcon = "bi-journal-check";
-  createTaskList(taskList, listArray, "", checkedIcon);
+  createTaskList(taskList, listArray, checkClass, checkedIcon);
   newTaskName.value = "";
   newTaskName.focus();
 }
@@ -130,9 +142,9 @@ function onDelete(parentEl) {
 
 function emptySection(whichSection) {
   if (whichSection == taskList) {
-    whichSection.innerHTML = "Crie uma nova tarefa"
+    whichSection.innerHTML = "Crie uma nova tarefa";
   } else if (whichSection == taskChecked) {
-    whichSection.style.display = "none"
+    whichSection.style.display = "none";
   }
 }
 
@@ -142,12 +154,9 @@ newTaskAdd.addEventListener("click", colectTitle);
 document.addEventListener("click", (el) => {
   const targetEl = el.target;
   const parentEl = targetEl.closest("div");
-  let forSection = "";
-  let checkClass = "";
-  let checkedIcon = "";
 
   if (el.target.className === "bi-journal-check") {
-    taskChecked.style.display = "flex"
+    taskChecked.style.display = "flex";
     forSection = taskChecked;
     checkClass = "checked";
     checkedIcon = "bi-journal-arrow-up";
