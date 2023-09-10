@@ -84,7 +84,8 @@ h2 {
   justify-content: center;
 }
 
-#task-list {
+#task-list,
+#task-checked {
   display: flex;
   flex-direction: column;
   gap: 10px;
