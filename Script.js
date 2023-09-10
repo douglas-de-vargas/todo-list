@@ -82,21 +82,20 @@ function createTaskList(forSection, toLocateArray, checkClass, checkedIcon) {
   });
 }
 
-function onChecked(forSection, checkClass, parentEl, arrayAtual, novoArray) {
-  const taskIndex = arrayAtual.indexOf(
+function onChecked(forSection, checkedIcon, checkClass, parentEl, currentArray, newArray) {
+  const taskIndex = currentArray.indexOf(
     parentEl.querySelector(".my-input").value
   );
   if (taskIndex !== -1) {
     //pega o valor da task checked
-    const checkedValue = arrayAtual[taskIndex];
+    const checkedValue = currentArray[taskIndex];
     //insere na checkedArray
-    novoArray.push(checkedValue);
+    newArray.push(checkedValue);
     //deleta da section task-list
-    arrayAtual.splice(taskIndex, 1);
+    currentArray.splice(taskIndex, 1);
     parentEl.remove();
 
-    checkedIcon = "bi-journal-arrow-up";
-    createTaskList(forSection, novoArray, checkClass, checkedIcon);
+    createTaskList(forSection, newArray, checkClass, checkedIcon);
   }
   console.log("onChecked " + taskIndex);
 }
@@ -125,11 +124,13 @@ document.addEventListener("click", (el) => {
   if (el.target.className === "bi-journal-check") {
     forSection = taskChecked;
     checkClass = "checked";
-    onChecked(forSection, checkClass, parentEl, listArray, checkedArray);
+    checkedIcon = "bi-journal-arrow-up";
+    onChecked(forSection, checkedIcon, checkClass, parentEl, listArray, checkedArray);
   } else if (el.target.className === "bi-journal-arrow-up") {
     forSection = taskList;
     checkClass = "";
-    onChecked(forSection, checkClass, parentEl, checkedArray, listArray);
+    checkedIcon = "bi-journal-check";
+    onChecked(forSection, checkedIcon, checkClass, parentEl, checkedArray, listArray);
   } else if (el.target.id === "task-list__delete") {
     onDelete(parentEl);
   }
