@@ -129,11 +129,11 @@ function onDelete(parentEl) {
 }
 
 function emptySection(whichSection) {
-	if (whichSection == taskList) {
-  whichSection.innerHTML = "Nenhuma tarefa!"
-	} else if (whichSection == taskChecked) {
-		whichSection.innerHTML = "0 Tarefas concluídas!"
-	}
+  if (whichSection == taskList) {
+    whichSection.innerHTML = "Crie uma nova tarefa"
+  } else if (whichSection == taskChecked) {
+    whichSection.style.display = "none"
+  }
 }
 
 // Chamados && EventListeners
@@ -147,6 +147,7 @@ document.addEventListener("click", (el) => {
   let checkedIcon = "";
 
   if (el.target.className === "bi-journal-check") {
+    taskChecked.style.display = "flex"
     forSection = taskChecked;
     checkClass = "checked";
     checkedIcon = "bi-journal-arrow-up";
