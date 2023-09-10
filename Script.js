@@ -5,6 +5,7 @@ const taskList = document.querySelector("#task-list");
 const taskListName = document.querySelector("#task-list__name");
 const taskListCheck = document.querySelector("#task-list__check");
 const taskListDelete = document.querySelector("#task-list__delete");
+const taskChecked = document.querySelector("#task-checked");
 
 let listArray = [];
 let checkedArray = [];
@@ -21,15 +22,15 @@ function colectTitle() {
   newTaskName.classList.remove("error");
   listArray.push(newTaskName.value.trim());
 
-  createTaskList();
+  createTaskList(taskList, listArray);
   newTaskName.value = "";
   newTaskName.focus();
 }
 
-function createTaskList() {
-  taskList.innerHTML = "";
+function createTaskList(locateSection, locateArray) {
+  locateSection.innerHTML = "";
 
-  listArray.forEach(function (task, index) {
+  locateArray.forEach(function (task, index) {
     // Div container
     const divTaskListContainer = document.createElement("div");
     divTaskListContainer.setAttribute("id", "task-list__container");
@@ -73,7 +74,7 @@ function createTaskList() {
     divTaskListContainer.appendChild(iconTaskListCheck);
     divTaskListContainer.appendChild(iconTaskListDelete);
 
-    taskList.insertBefore(divTaskListContainer, taskList.firstChild);
+    locateSection.insertBefore(divTaskListContainer, locateSection.firstChild);
   });
 }
 
@@ -96,6 +97,8 @@ taskList.addEventListener("click", (el) => {
       //deleta da section task-list
       listArray.splice(taskIndex, 1);
       parentEl.remove();
+      
+      createTaskList(taskChecked, checkedArray)
     }
   } else if (el.target.id === "task-list__delete") {
     const taskIndex = listArray.indexOf(
