@@ -116,16 +116,20 @@ function onDelete(parentEl) {
     //deleta a task do DOM
     parentEl.remove();
     if (taskList.innerHTML === "") {
-      alert("taskList vazia");
+      emptySection(taskList.id);
     }
   } else if (taskIndexInChecked !== -1) {
     checkedArray.splice(taskIndexInChecked, 1);
     //deleta a task do DOM
     parentEl.remove();
     if (taskChecked.innerHTML === "") {
-      alert("taskChecked vazia");
+      emptySection(taskChecked.id);
     }
   }
+}
+
+function emptySection(whichSection) {
+  alert(whichSection + " vazia");
 }
 
 // Chamados && EventListeners
@@ -150,6 +154,9 @@ document.addEventListener("click", (el) => {
       listArray,
       checkedArray
     );
+    if (taskList.innerHTML === "") {
+      emptySection(taskList.id);
+    }
   } else if (el.target.className === "bi-journal-arrow-up") {
     forSection = taskList;
     checkClass = "";
@@ -162,6 +169,9 @@ document.addEventListener("click", (el) => {
       checkedArray,
       listArray
     );
+    if (taskChecked.innerHTML === "") {
+      emptySection(taskChecked.id);
+    }
   } else if (el.target.className === "bi-trash3") {
     onDelete(parentEl);
   }
