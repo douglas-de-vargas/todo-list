@@ -6,6 +6,7 @@ const taskListName = document.querySelector("#task-list__name");
 const taskListCheck = document.querySelector("#task-list__check");
 const taskListDelete = document.querySelector("#task-list__delete");
 const taskChecked = document.querySelector("#task-checked");
+const taskListContainer = document.querySelector("#task-list__container")
 
 let listArray = [];
 let checkedArray = [];
@@ -27,13 +28,14 @@ function colectTitle() {
   newTaskName.focus();
 }
 
-function createTaskList(locateSection, locateArray) {
+function createTaskList(locateSection, locateArray, checkClass) {
   locateSection.innerHTML = "";
 
   locateArray.forEach(function (task, index) {
     // Div container
     const divTaskListContainer = document.createElement("div");
     divTaskListContainer.setAttribute("id", "task-list__container");
+    divTaskListContainer.setAttribute("class", checkClass);
 
     // Input da tarefa
     const inputTaskListName = document.createElement("input");
@@ -98,7 +100,8 @@ taskList.addEventListener("click", (el) => {
       listArray.splice(taskIndex, 1);
       parentEl.remove();
       
-      createTaskList(taskChecked, checkedArray)
+      createTaskList(taskChecked, checkedArray, "checked")
+
     }
   } else if (el.target.id === "task-list__delete") {
     const taskIndex = listArray.indexOf(
