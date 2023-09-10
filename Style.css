@@ -19,17 +19,6 @@ body {
   background: #f3f3f3;
 }
 
-#git {
-  width: 100%;
-  margin-top: 20px;
-  text-align: center;
-}
-
-#git a {
-  color: gold;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-}
-
 main {
   border: 1px solid var(--corBordas);
   background: #fff;
@@ -41,8 +30,22 @@ main {
   flex-direction: column;
 }
 
-h2 {
+header {
   text-align: center;
+}
+
+header a {
+	text-decoration: none;
+	font-size: .7rem;
+	text-shadow: 1px 1px 1px var(--corBordas);
+}
+
+.bi-github {
+	color: #000;
+}
+
+.bi-linkedin {
+	color: #0e76a8;
 }
 
 #new-task {
