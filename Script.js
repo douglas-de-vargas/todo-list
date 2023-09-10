@@ -113,14 +113,18 @@ function onDelete(parentEl) {
   //deleta o conteúdo do array correto
   if (taskIndexInList !== -1) {
     listArray.splice(taskIndexInList, 1);
+    //deleta a task do DOM
+    parentEl.remove();
+    if (taskChecked.innerHTML === "") {
+      alert("taskList vazia");
+    }
   } else if (taskIndexInChecked !== -1) {
     checkedArray.splice(taskIndexInChecked, 1);
-  //deleta a task do DOM
-  parentEl.remove();
+    //deleta a task do DOM
+    parentEl.remove();
     if (taskChecked.innerHTML === "") {
-  alert('taskChecked vazia');
-}
-
+      alert("taskChecked vazia");
+    }
   }
 }
 
