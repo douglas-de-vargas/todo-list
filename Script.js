@@ -115,7 +115,7 @@ function onDelete(parentEl) {
     listArray.splice(taskIndexInList, 1);
     //deleta a task do DOM
     parentEl.remove();
-    if (taskChecked.innerHTML === "") {
+    if (taskList.innerHTML === "") {
       alert("taskList vazia");
     }
   } else if (taskIndexInChecked !== -1) {
