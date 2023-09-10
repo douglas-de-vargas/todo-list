@@ -115,16 +115,24 @@ function onDelete(parentEl) {
     listArray.splice(taskIndexInList, 1);
     //deleta a task do DOM
     parentEl.remove();
-    if (taskChecked.innerHTML === "") {
-      alert("taskList vazia");
+    if (taskList.innerHTML === "") {
+      emptySection(taskList);
     }
   } else if (taskIndexInChecked !== -1) {
     checkedArray.splice(taskIndexInChecked, 1);
     //deleta a task do DOM
     parentEl.remove();
     if (taskChecked.innerHTML === "") {
-      alert("taskChecked vazia");
+      emptySection(taskChecked);
     }
+  }
+}
+
+function emptySection(whichSection) {
+  if (whichSection == taskList) {
+    whichSection.innerHTML = "Crie uma nova tarefa"
+  } else if (whichSection == taskChecked) {
+    whichSection.style.display = "none"
   }
 }
 
@@ -139,6 +147,7 @@ document.addEventListener("click", (el) => {
   let checkedIcon = "";
 
   if (el.target.className === "bi-journal-check") {
+    taskChecked.style.display = "flex"
     forSection = taskChecked;
     checkClass = "checked";
     checkedIcon = "bi-journal-arrow-up";
@@ -150,6 +159,9 @@ document.addEventListener("click", (el) => {
       listArray,
       checkedArray
     );
+    if (taskList.innerHTML === "") {
+      emptySection(taskList);
+    }
   } else if (el.target.className === "bi-journal-arrow-up") {
     forSection = taskList;
     checkClass = "";
@@ -162,6 +174,9 @@ document.addEventListener("click", (el) => {
       checkedArray,
       listArray
     );
+    if (taskChecked.innerHTML === "") {
+      emptySection(taskChecked);
+    }
   } else if (el.target.className === "bi-trash3") {
     onDelete(parentEl);
   }
