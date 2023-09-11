@@ -36,19 +36,7 @@ function colectTitle() {
     taskDupe.style.display = "none";
     listArray.push(newTaskValue);
   }
-
-  // if (
-  //     !listArray.includes(newTaskValue) ||
-  //     !checkedArray.includes(newTaskValue)
-  //   ) {
-  //     listArray.push(newTaskValue);
-  //   } else {
-  //     newTaskName.classList.add("error");
-  //     newTaskName.value = "";
-  //     newTaskName.focus();
-  //     return;
-  //   }
-
+  
   checkedIcon = "bi-journal-check";
   checkClass = "";
   createTaskList(taskList, listArray, checkClass, checkedIcon);
