@@ -29,12 +29,11 @@ function colectTitle() {
 
   if (listArray.includes(newTaskValue) || checkedArray.includes(newTaskValue)) {
     taskDupe.style.display = "block";
-    newTaskName.classList.add("error");
     newTaskName.value = "";
     newTaskName.focus();
     return;
   } else {
-	taskDupe.style.display = "none";
+    taskDupe.style.display = "none";
     listArray.push(newTaskValue);
   }
 
