@@ -36,7 +36,7 @@ function colectTitle() {
     taskDupe.style.display = "none";
     listArray.push(newTaskValue);
   }
-  
+
   checkedIcon = "bi-journal-check";
   checkClass = "";
   createTaskList(taskList, listArray, checkClass, checkedIcon);
