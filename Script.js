@@ -9,6 +9,7 @@ const taskListDelete = document.querySelector("#task-list__delete");
 const taskChecked = document.querySelector("#task-checked");
 const taskListContainer = document.querySelector("#task-list__container");
 
+let inputDisabled = ''
 let forSection = "";
 let checkClass = "";
 let checkedIcon = "";
@@ -16,6 +17,7 @@ let listArray = [];
 let checkedArray = [];
 
 // Functions
+
 const emptyInput = () => newTaskName.value.trim().length > 0;
 
 function colectTitle() {
@@ -37,12 +39,13 @@ function colectTitle() {
   }
   checkedIcon = "bi-journal-check";
   checkClass = "";
-  createTaskList(taskList, listArray, checkClass, checkedIcon);
+  inputDisabled = true
+  createTaskList(taskList, listArray, checkClass, checkedIcon, inputDisabled);
   newTaskName.value = "";
   newTaskName.focus();
 }
 
-function createTaskList(forSection, toLocateArray, checkClass, checkedIcon) {
+function createTaskList(forSection, toLocateArray, checkClass, checkedIcon, inputDisabled) {
   forSection.innerHTML = "";
 
   toLocateArray.forEach(function (task, index) {
@@ -54,17 +57,15 @@ function createTaskList(forSection, toLocateArray, checkClass, checkedIcon) {
     // Input da tarefa
     const inputTaskListName = document.createElement("input");
     const inputAttributes = {
-      class: "my-input",
-      name: index,
       id: "task-list__name",
       type: "text",
-      placeholder: "Editando nota",
+      placeholder: "Editando a nota",
       value: task,
-      readonly: "readonly",
     };
     for (const key in inputAttributes) {
       inputTaskListName.setAttribute(key, inputAttributes[key]);
     }
+    inputTaskListName.disabled = inputDisabled
 
     // Icon checked
     const iconTaskListCheck = document.createElement("i");
@@ -104,7 +105,7 @@ function onChecked(
   newArray
 ) {
   const taskIndex = currentArray.indexOf(
-    parentEl.querySelector(".my-input").value
+    parentEl.querySelector("#task-list__name").value
   );
   if (taskIndex !== -1) {
     //pega o valor da task checked
@@ -115,13 +116,13 @@ function onChecked(
     currentArray.splice(taskIndex, 1);
     parentEl.remove();
 
-    createTaskList(forSection, newArray, checkClass, checkedIcon);
+    createTaskList(forSection, newArray, checkClass, checkedIcon, inputDisabled);
   }
 }
 
 function onDelete(parentEl) {
   //verifica em qual Array está o valor
-  const taskValue = parentEl.querySelector(".my-input").value;
+  const taskValue = parentEl.querySelector("#task-list__name").value;
   const taskIndexInList = listArray.indexOf(taskValue);
   const taskIndexInChecked = checkedArray.indexOf(taskValue);
   //deleta o conteúdo do array correto
@@ -162,13 +163,14 @@ document.addEventListener("click", (el) => {
     forSection = taskChecked;
     checkClass = "checked";
     checkedIcon = "bi-journal-arrow-up";
+    inputDisabled = true
     onChecked(
       forSection,
       checkedIcon,
       checkClass,
       parentEl,
       listArray,
-      checkedArray
+      checkedArray, inputDisabled
     );
     if (taskList.innerHTML === "") {
       emptySection(taskList);
