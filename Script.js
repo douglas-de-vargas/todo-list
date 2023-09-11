@@ -1,5 +1,6 @@
 // Variáveis
-let newTaskName = document.querySelector("#new-task__name");
+const newTaskName = document.querySelector("#new-task__name");
+const taskDupe = document.querySelector("#task-dupe");
 const newTaskAdd = document.querySelector("#new-task__add");
 const taskList = document.querySelector("#task-list");
 const taskListName = document.querySelector("#task-list__name");
@@ -8,6 +9,9 @@ const taskListDelete = document.querySelector("#task-list__delete");
 const taskChecked = document.querySelector("#task-checked");
 const taskListContainer = document.querySelector("#task-list__container");
 
+let forSection = "";
+let checkClass = "";
+let checkedIcon = "";
 let listArray = [];
 let checkedArray = [];
 
@@ -21,10 +25,21 @@ function colectTitle() {
     return;
   }
   newTaskName.classList.remove("error");
-  listArray.push(newTaskName.value.trim());
+  const newTaskValue = newTaskName.value.trim();
+
+  if (listArray.includes(newTaskValue) || checkedArray.includes(newTaskValue)) {
+    taskDupe.style.display = "block";
+    newTaskName.value = "";
+    newTaskName.focus();
+    return;
+  } else {
+    taskDupe.style.display = "none";
+    listArray.push(newTaskValue);
+  }
 
   checkedIcon = "bi-journal-check";
-  createTaskList(taskList, listArray, "", checkedIcon);
+  checkClass = "";
+  createTaskList(taskList, listArray, checkClass, checkedIcon);
   newTaskName.value = "";
   newTaskName.focus();
 }
@@ -130,9 +145,9 @@ function onDelete(parentEl) {
 
 function emptySection(whichSection) {
   if (whichSection == taskList) {
-    whichSection.innerHTML = "Crie uma nova tarefa"
+    whichSection.innerHTML = "Crie uma nova tarefa";
   } else if (whichSection == taskChecked) {
-    whichSection.style.display = "none"
+    whichSection.style.display = "none";
   }
 }
 
@@ -142,12 +157,9 @@ newTaskAdd.addEventListener("click", colectTitle);
 document.addEventListener("click", (el) => {
   const targetEl = el.target;
   const parentEl = targetEl.closest("div");
-  let forSection = "";
-  let checkClass = "";
-  let checkedIcon = "";
 
   if (el.target.className === "bi-journal-check") {
-    taskChecked.style.display = "flex"
+    taskChecked.style.display = "flex";
     forSection = taskChecked;
     checkClass = "checked";
     checkedIcon = "bi-journal-arrow-up";
