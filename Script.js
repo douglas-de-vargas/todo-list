@@ -19,15 +19,14 @@ let checkedArray = [];
 const emptyInput = () => newTaskName.value.trim().length > 0;
 
 function colectTitle() {
+  newTaskName.classList.remove("error");
+  taskDupe.style.display = "none";
   if (!emptyInput()) {
     newTaskName.classList.add("error");
     newTaskName.focus();
     return;
   }
-  newTaskName.classList.remove("error");
-  taskDupe.style.display = "none";
   const newTaskValue = newTaskName.value.trim();
-
   if (listArray.includes(newTaskValue) || checkedArray.includes(newTaskValue)) {
     taskDupe.style.display = "block";
     newTaskName.value = "";
@@ -36,7 +35,6 @@ function colectTitle() {
   } else {
     listArray.push(newTaskValue);
   }
-
   checkedIcon = "bi-journal-check";
   checkClass = "";
   createTaskList(taskList, listArray, checkClass, checkedIcon);
