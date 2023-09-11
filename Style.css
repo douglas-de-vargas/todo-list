@@ -61,6 +61,12 @@ header a {
   margin-right: 45px;
 }
 
+#task-dupe {
+	margin-top: 5px;
+	color: red;
+	font-size: .7rem;
+}
+
 .error {
   border: 1px solid #e98b8b !important;
 }
