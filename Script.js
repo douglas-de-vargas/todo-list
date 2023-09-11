@@ -39,13 +39,19 @@ function colectTitle() {
   }
   checkedIcon = "bi-journal-check";
   checkClass = "";
-  inputDisabled = true
+  inputDisabled = true;
   createTaskList(taskList, listArray, checkClass, checkedIcon, inputDisabled);
   newTaskName.value = "";
   newTaskName.focus();
 }
 
-function createTaskList(forSection, toLocateArray, checkClass, checkedIcon, inputDisabled) {
+function createTaskList(
+  forSection,
+  toLocateArray,
+  checkClass,
+  checkedIcon,
+  inputDisabled
+) {
   forSection.innerHTML = "";
 
   toLocateArray.forEach(function (task, index) {
@@ -65,7 +71,7 @@ function createTaskList(forSection, toLocateArray, checkClass, checkedIcon, inpu
     for (const key in inputAttributes) {
       inputTaskListName.setAttribute(key, inputAttributes[key]);
     }
-    inputTaskListName.disabled = inputDisabled
+    inputTaskListName.disabled = inputDisabled;
 
     // Icon checked
     const iconTaskListCheck = document.createElement("i");
@@ -116,7 +122,12 @@ function onChecked(
     currentArray.splice(taskIndex, 1);
     parentEl.remove();
 
-    createTaskList(forSection, newArray, checkClass, checkedIcon, inputDisabled);
+    createTaskList(
+      forSection,
+      newArray,
+      checkClass,
+      checkedIcon,
+    );
   }
 }
 
@@ -163,14 +174,13 @@ document.addEventListener("click", (el) => {
     forSection = taskChecked;
     checkClass = "checked";
     checkedIcon = "bi-journal-arrow-up";
-    inputDisabled = true
     onChecked(
       forSection,
       checkedIcon,
       checkClass,
       parentEl,
       listArray,
-      checkedArray, inputDisabled
+      checkedArray,
     );
     if (taskList.innerHTML === "") {
       emptySection(taskList);
