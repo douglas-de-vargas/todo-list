@@ -1,5 +1,6 @@
 // Variáveis
-let newTaskName = document.querySelector("#new-task__name");
+const newTaskName = document.querySelector("#new-task__name");
+const taskDupe = document.querySelector("#task-dupe");
 const newTaskAdd = document.querySelector("#new-task__add");
 const taskList = document.querySelector("#task-list");
 const taskListName = document.querySelector("#task-list__name");
@@ -27,12 +28,13 @@ function colectTitle() {
   const newTaskValue = newTaskName.value.trim();
 
   if (listArray.includes(newTaskValue) || checkedArray.includes(newTaskValue)) {
+    taskDupe.style.display = "block";
     newTaskName.classList.add("error");
     newTaskName.value = "";
     newTaskName.focus();
-    console.log(listArray, checkedArray);
     return;
   } else {
+	taskDupe.style.display = "none";
     listArray.push(newTaskValue);
   }
 
