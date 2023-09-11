@@ -37,6 +37,7 @@ header a {
   text-decoration: none;
   font-size: 0.9rem;
   text-shadow: 1px 1px 1px var(--corBordas);
+  cursor: pointer;
 }
 
 .bi-github {
