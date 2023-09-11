@@ -14,7 +14,7 @@ button {
 }
 
 body {
-  background: #f3f3f3 ;
+  background: #f3f3f3;
 }
 
 main {
@@ -33,24 +33,24 @@ header {
 }
 
 header a {
-	text-decoration: none;
-	font-size: .7rem;
-	text-shadow: 1px 1px 1px var(--corBordas);
+  text-decoration: none;
+  font-size: 0.7rem;
+  text-shadow: 1px 1px 1px var(--corBordas);
 }
 
 .bi-github {
-	color: #000;
+  color: #000;
 }
 
 .bi-linkedin {
-	color: #0e76a8;
+  color: #0e76a8;
 }
 
 #new-task {
   position: relative;
   display: flex;
   gap: 5px;
-  margin-top: .8rem;
+  margin-top: 0.8rem;
 }
 
 #new-task__name {
@@ -62,9 +62,10 @@ header a {
 }
 
 #task-dupe {
-	margin-top: 5px;
-	color: red;
-	font-size: .7rem;
+  margin-top: 5px;
+  color: red;
+  font-size: 0.7rem;
+  display: none;
 }
 
 .error {
@@ -102,8 +103,8 @@ header a {
 }
 
 .checked input {
-	background: rgba(145,186,101,0.642);
-	color: #677c55;
+  background: rgba(145, 186, 101, 0.642);
+  color: #677c55;
 }
 
 #task-list__name {
