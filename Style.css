@@ -24,6 +24,7 @@ main {
   margin: 50px auto;
   padding: 1rem;
   width: 90%;
+  max-width: 380px;
   display: flex;
   flex-direction: column;
 }
@@ -34,7 +35,7 @@ header {
 
 header a {
   text-decoration: none;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   text-shadow: 1px 1px 1px var(--corBordas);
 }
 
