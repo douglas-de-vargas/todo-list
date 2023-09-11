@@ -60,6 +60,7 @@ function createTaskList(forSection, toLocateArray, checkClass, checkedIcon) {
       type: "text",
       placeholder: "Editando nota",
       value: task,
+      readonly: "readonly",
     };
     for (const key in inputAttributes) {
       inputTaskListName.setAttribute(key, inputAttributes[key]);
@@ -191,4 +192,3 @@ document.addEventListener("click", (el) => {
     onDelete(parentEl);
   }
 });
-        
