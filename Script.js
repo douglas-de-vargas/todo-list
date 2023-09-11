@@ -25,6 +25,7 @@ function colectTitle() {
     return;
   }
   newTaskName.classList.remove("error");
+  taskDupe.style.display = "none";
   const newTaskValue = newTaskName.value.trim();
 
   if (listArray.includes(newTaskValue) || checkedArray.includes(newTaskValue)) {
@@ -33,7 +34,6 @@ function colectTitle() {
     newTaskName.focus();
     return;
   } else {
-    taskDupe.style.display = "none";
     listArray.push(newTaskValue);
   }
 
