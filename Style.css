@@ -89,14 +89,16 @@ header a {
   justify-content: center;
 }
 
+#task-list {
+  border-top: 1px solid var(--corBordas);
+  margin-top: 15px;
+}
 #task-list,
 #task-checked {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border-top: 1px solid var(--corBordas);
-  margin-top: 15px;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 #task-list__container {
