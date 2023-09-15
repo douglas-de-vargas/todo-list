@@ -9,7 +9,7 @@ const taskListDelete = document.querySelector("#task-list__delete");
 const taskChecked = document.querySelector("#task-checked");
 const taskListContainer = document.querySelector("#task-list__container");
 
-let inputDisabled = ''
+let inputDisabled = true
 let forSection = "";
 let checkClass = "";
 let checkedIcon = "";
@@ -39,7 +39,6 @@ function colectTitle() {
   }
   checkedIcon = "bi-journal-check";
   checkClass = "";
-  inputDisabled = true;
   createTaskList(taskList, listArray, checkClass, checkedIcon, inputDisabled);
   newTaskName.value = "";
   newTaskName.focus();
@@ -108,7 +107,8 @@ function onChecked(
   checkClass,
   parentEl,
   currentArray,
-  newArray
+  newArray,
+  inputDisabled,
 ) {
   const taskIndex = currentArray.indexOf(
     parentEl.querySelector("#task-list__name").value
@@ -127,6 +127,7 @@ function onChecked(
       newArray,
       checkClass,
       checkedIcon,
+      inputDisabled,
     );
   }
 }
@@ -170,10 +171,12 @@ document.addEventListener("click", (el) => {
   const parentEl = targetEl.closest("div");
 
   if (el.target.className === "bi-journal-check") {
+  	// Concluir a tarefa
     taskChecked.style.display = "flex";
     forSection = taskChecked;
     checkClass = "checked";
     checkedIcon = "bi-journal-arrow-up";
+  // inputDisabled = true
     onChecked(
       forSection,
       checkedIcon,
@@ -181,11 +184,13 @@ document.addEventListener("click", (el) => {
       parentEl,
       listArray,
       checkedArray,
+      inputDisabled,
     );
     if (taskList.innerHTML === "") {
       emptySection(taskList);
     }
   } else if (el.target.className === "bi-journal-arrow-up") {
+  	// Quando a tarefa já está concluída
     forSection = taskList;
     checkClass = "";
     checkedIcon = "bi-journal-check";
@@ -195,7 +200,8 @@ document.addEventListener("click", (el) => {
       checkClass,
       parentEl,
       checkedArray,
-      listArray
+      listArray,
+      inputDisabled,
     );
     if (taskChecked.innerHTML === "") {
       emptySection(taskChecked);
